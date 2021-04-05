@@ -42,12 +42,12 @@ class GunplaController < ApplicationController
   def destroy
     @gunpla = Gunpla.find(params[:id]).destroy
     flash[:alert] = 'Gunpla has been successfully deleted'
-    redirect to gunplas_path
+    redirect_to gunplas_path
   end
 
   private
 
-  def gunpla_params do
+  def gunpla_params
     params.require(:gunpla).permit(:kit_name, :gundam_name, :gundam_series, :grade, :scale)
   end
 end
