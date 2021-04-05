@@ -20,25 +20,8 @@
         <div id="account">
           <div id="account-button-container">
             <button class='button-default account-button'>
-              Account
+              <a href='/users/sign_in'>Account</a>
             </button>
-            <div id="account-housing">
-              <%= form_with url: "/sign-in", method: :post do |form| %>
-                <p>Please Login</p>
-                 <%= form.label "email:" %>
-                 <%= form.input :email %>
-                 <%= form.label "password:" %>
-                 <%= form.input :user_password %>
-                  <%= form.submit "Search" %>
-              <% end %>
-              <%# <p>Please Login</p>
-              <input type='text' id="user_email" placeholder="Email"/>
-              <input type='text' id="user_password" placeholder="Password"/>
-              <div id="submit-button">
-                <button>Submit</button>
-              </div>
-                <a href='/'>Sign Up</a> %>
-            </div>
           </div>
         </div>
       </div>
