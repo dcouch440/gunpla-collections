@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  root to: 'gunplas#index'
+
+  post 'sign-in', to: 'users#sign_in'
+  delete 'sign-out', to: 'users#sign_out'
+
+  resources :users, except: [:index] do
+    resources :gunplas, only: [:index, :show]
+  end
+  resources :gunplas, only: [:index, :show] do
+    resources :reviews, except: [:index]
+  end
 end
