@@ -4,12 +4,45 @@
     <title>GunplaCollections</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link ref="stylesheet" href="./app/assets/stylesheets/gunplas.css">
   </head>
 
   <body>
-    <%= yield %>
+    <div id="body-container">
+      <div id='navbar'>
+        <div id="navigation">
+          <a class='link-default' href='/'>Home</a>
+          <a class='link-default' href='/'>figures</a>
+          <a class='link-default' href='/'>Dogs</a>
+        </div>
+        <div id="account">
+          <div id="account-button-container">
+            <button class='button-default account-button'>
+              Account
+            </button>
+            <div id="account-housing">
+              <%= form_with url: "/sign-in", method: :post do |form| %>
+                <p>Please Login</p>
+                 <%= form.label "email:" %>
+                 <%= form.input :email %>
+                 <%= form.label "password:" %>
+                 <%= form.input :user_password %>
+                  <%= form.submit "Search" %>
+              <% end %>
+              <%# <p>Please Login</p>
+              <input type='text' id="user_email" placeholder="Email"/>
+              <input type='text' id="user_password" placeholder="Password"/>
+              <div id="submit-button">
+                <button>Submit</button>
+              </div>
+                <a href='/'>Sign Up</a> %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>

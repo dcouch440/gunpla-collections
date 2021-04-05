@@ -1,4 +1,4 @@
-class GunplaController < ApplicationController
+class GunplasController < ApplicationController
   def index
     @gunpla = Gunpla.all
     render :index
