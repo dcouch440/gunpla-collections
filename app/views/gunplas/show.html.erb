@@ -1,32 +1,78 @@
 <div class="figures">
   <div class="top-grid">
-    <div class='box-1'>Box 1</div>
-    <div class='box-2'>Box 2</div>
-  </div>
-  <div class="bottom-grid">
-    <div class="box-1">Box 1</div>
-    <div class="box-2">Box 2</div>
-    <div class="box-3">Box 3</div>
-    <div class="box-4">Box 4</div>
-    <div class="box-5">Box 5</div>
-    <div class="box-6">Box 6</div>
-    <div class="box-7">Box 7</div>
-    <div class="box-8">Box 8</div>
-  </div>
-  <div class='reviews'>
-    <div class="review">
-      <div class="review-info-container">
-        <div class="review-info">
-          <div class="avatar center-content">Avatar</div>
-          <div class="author-username">Username</div>
-          <div class="author-signed-up">Signed Up At?</div>
-          <div class="how-many-posts">How Many Posts</div>
-          <div class="author-bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam culpa laborum similique dolorem ipsum illum! Sint, dolor dignissimos mollitia itaque esse natus sequi id voluptate consectetur eius, adipisci eos nam! Ipsa officiis, incidunt veritatis laudantium unde corporis cum officia impedit voluptates ratione, earum est laborum et sint quod deleniti tempore saepe doloremque molestiae nulla corrupti quasi facilis quam deserunt! Animi enim vitae sed laboriosam saepe blanditiis cum quis repellat delectus iste. Cumque voluptate eum similique aut incidunt itaque, voluptatem vitae!</div>
-        </div>
-      </div>
-      <div class="review-body">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aspernatur non dolorum, nisi consequatur, sunt quae temporibus explicabo esse tempore quo soluta illo voluptatem qui? Temporibus, adipisci. Nam sequi neque nostrum cumque alias aperiam quidem sint dolore. Quaerat quisquam eveniet odio quia aliquam iusto aspernatur! Facilis minima hic architecto praesentium corporis illo voluptatum dolor tenetur minus repudiandae consequuntur velit officia temporibus ullam amet, neque, nemo explicabo exercitationem voluptas quam delectus, cumque ab placeat. Error ducimus non dolore mollitia natus quas doloribus modi incidunt molestias earum. Ex veritatis vel, numquam maiores sunt cupiditate corporis labore similique tempore atque quia nam asperiores odio saepe distinctio perferendis architecto corrupti fugiat harum, unde error perspiciatis provident dolore aspernatur? Qui officiis facilis laboriosam sed ipsum reprehenderit, veritatis sapiente modi iure animi esse quod incidunt aspernatur consequatur ullam nobis maiores pariatur debitis. Veritatis voluptatum odit, aliquid quos suscipit veniam ex facilis ut est doloremque eum sed magnam, necessitatibus nihil vel incidunt fugiat exercitationem temporibus architecto nemo? Eum expedita sed rerum perferendis eos dolor aperiam, nemo accusantium enim provident quo numquam libero debitis blanditiis ea neque distinctio commodi aut cupiditate fuga tempora culpa! Sunt, eos veritatis? Necessitatibus nemo maiores blanditiis in ut enim, possimus explicabo quia aperiam porro accusamus sit, iusto nostrum ipsum officia eveniet molestias laborum quae eaque aspernatur velit facilis doloremque quam pariatur. Voluptate, nesciunt tempora! Consequatur ratione sequi iste distinctio nulla unde repudiandae illo a dignissimos voluptatem id molestias, placeat laborum, excepturi natus impedit debitis laboriosam nisi voluptatum numquam deserunt repellendus facere ipsa dolorem.
+    <div class='box-1'>
+      <%= image_tag(@gunpla.images.first) %>
+    </div>
+    <div class='box-2'>
+      <div id="kit-info">
+        <div><span>Kit Name:</span> <%= @gunpla.kit_name %></div>
+        <div><span>Gundam Name:</span> <%= @gunpla.gundam_name %></div>
+        <div><span>Grade:</span> <%= @gunpla.grade %></div>
+        <div><span>Scale:</span> <%= @gunpla.scale %></div>
+        <div><span>Gundam Series:</span> <%= @gunpla.gundam_series %></div>
       </div>
     </div>
   </div>
+  <div class="bottom-grid">
+    <% @gunplas_related.each_with_index do |gunpla, index| %>
+      <% box_number = index + 1 %>
+      <div class="box-<%= box_number %>">
+        <a href="<%=  gunpla_path(gunpla)  %>">
+          <%= image_tag(gunpla.images.first) %>
+          <div class="kit_name"><%= gunpla.kit_name %></div>
+        </a>
+      </div>
+    <% end %>
+  </div>
+  <div class='reviews'>
+    <% @reviews.each do |review| %>
+      <% user = User.find(review.user_id) %>
+      <div class="review">
+        <div class="review-info-container">
+          <div class="review-info">
+            <div class="avatar center-content"><%= image_tag(user.avatar) %></div>
+            <div class="author-username"><%= user.username %></div>
+            <div class="author-signed-up"><%= user.created_in_english %></div>
+            <div class="how-many-posts">How Many Posts</div>
+            <div class="author-bio">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam culpa laborum similique dolorem ipsum illum! Sint, dolor dignissimos mollitia itaque esse natus sequi id voluptate consectetur eius, adipisci eos nam! Ipsa officiis, incidunt veritatis laudantium unde corporis cum officia impedit voluptates ratione, earum est laborum et sint quod deleniti tempore saepe doloremque molestiae nulla corrupti quasi facilis quam deserunt! Animi enim vitae sed laboriosam saepe blanditiis cum quis repellat delectus iste. Cumque voluptate eum similique aut incidunt itaque, voluptatem vitae!
+            </div>
+          </div>
+        </div>
+        <div class="review-body">
+            <%= review.title %>
+            <%= review.rating %>
+            <%= review.content_body %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
+
+
+  <div class='reviews'>
+    <% @reviews.each do |review| %>
+      <% user = User.find(review.user_id) %>
+      <div class="review">
+  
+        <div class="review-info">
+              <div class="avatar center-content">Avatar</div>
+              <div class="author-username">Username</div>
+              <div class="author-signed-up">Signed Up At?</div>
+              <div class="how-many-posts">How Many Posts</div>
+          <div class="author-bio">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam culpa laborum similique dolorem ipsum illum! Sint, dolor dignissimos mollitia itaque esse natus sequi id voluptate consectetur eius, adipisci eos nam! Ipsa officiis, incidunt veritatis laudantium unde corporis cum officia impedit voluptates ratione.
+          </div>
+
+          <div class="review-body">
+            <%= review.title %>
+            <%= review.rating %>
+            <%= review.content_body %>
+          </div>
+
+        </div>
+
+      </div>
+    <% end %>
+  
+  </div>

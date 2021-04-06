@@ -1,11 +1,13 @@
 class GunplasController < ApplicationController
   def index
-    @rand_gunplas = get_randoms(Gunpla.all)
+    @rand_gunplas = get_twelve_random()
     render :index
   end
 
   def show
     @gunpla = Gunpla.find(params[:id])
+    @gunplas_related = get_eight_random()
+    @reviews = Review.gunpla_reviews(@gunpla.id)
     render :show
   end
 
@@ -51,7 +53,11 @@ class GunplasController < ApplicationController
     params.require(:gunpla).permit(:kit_name, :gundam_name, :gundam_series, :grade, :scale)
   end
 
-  def get_randoms(data_array)
-    data_array.sample(12)
+  def get_twelve_random
+    Gunpla.all.sample(12)
+  end
+
+  def get_eight_random
+    Gunpla.all.sample(8)
   end
 end

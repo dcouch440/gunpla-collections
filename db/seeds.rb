@@ -10,7 +10,7 @@ Review.destroy_all
                          password_confirmation: 'pass123' })
   5.times do
     reviews = Review.create!({ user_id: user.id, gunpla_id: rand(1..14), title: Faker::Games::WorldOfWarcraft.quote,
-                               content_body: Faker::Lorem.paragraph_by_chars(number: 150, supplemental: false),
+                               content_body: Faker::Lorem.paragraph_by_chars(number: 650, supplemental: false),
                                rating: rand(1..5) })
   end
 end

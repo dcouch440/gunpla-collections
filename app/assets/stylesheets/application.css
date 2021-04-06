@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');
+
 :root {
   --footer-height: 30px;
   --body-container-height: calc(100% - var(--footer-height))
@@ -15,10 +17,11 @@ html, body {
 /*  DEFAULTS --------------------------------------------------------- */
 .link-default {
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  font-family: fantasy;
 }
 .link-default:hover {
-  text-shadow: 0px 0px 5px rgb(255, 255, 255);
+  text-shadow: 0px 0px 1px rgb(167, 167, 167);
   text-decoration: underline;
 }
 .link-default:focus {
@@ -26,10 +29,10 @@ html, body {
   outline: black;
 }
 .button-default:hover {
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.466);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.466), 0 0 1px 1px white;
 }
 .button-default:focus {
-  box-shadow: 0 0 0 5px black;
+  box-shadow: 0 0 0 5px rgb(255, 255, 255);
 }
 .center-content {
   display: flex;
@@ -40,10 +43,11 @@ html, body {
 /* NAVBAR----------------------------------------------------------- */
 #navbar {
   height: 60px;
-  background-color: #ddd;
+  background-color: rgb(0, 0, 0);
   padding: 20px;
   display: flex;
   align-items: center;
+  margin-bottom: 5px;
 }
 .navigation > a {
   margin: 2px;
@@ -55,22 +59,18 @@ html, body {
   flex-direction: row-reverse;
 }
 #account button {
-  border: 2px solid black;
+  border: 2px solid rgb(255, 255, 255);
   padding: 5px 10px;
   border-radius: 3px;
-  background-color: rgb(209, 209, 209);
+  background-color: rgb(0, 0, 0);
+}
+#account button a {
+  text-decoration: none;
+  color: white;
+  font-family: fantasy;
 }
 #account-button-container {
   position: relative;
-}
-#account-housing {
-  display: none;
-  position: absolute;
-  right: 100%;
-  top: 0;
-  background-color: dimgray;
-  height: 250px;
-  padding: 10px;
 }
 #account-housing > * {
   margin: 5px;
@@ -87,27 +87,54 @@ html, body {
 #navigation {
   width: 50%;
 }
-.home {
+.home, .figures {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
 
 /* GUNPLAS-INDEX-----------------------------------*/
-.top-grid, .mid-grid {
+.home .top-grid, .home .mid-grid {
   margin-top: 5px;
 }
 /* PAGE FORMATING FOR FRONT */
-.top-grid > div, .mid-grid > div {
+.home .top-grid > div, .home .mid-grid > div {
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.747);
+  border-radius: 2px;
   margin: 0;
   padding: 0;
 }
-.top-grid .kit_name, .mid-grid .kit_name {
-  position: absolute;
+.home .top-grid a, .home  .mid-grid a {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
-.top-grid img, .mid-grid img {
+:is(.home .top-grid img, .home .mid-grid img):hover {
+  transform: scale(1.02);
+  transition: .3s;
+}
+:is(.home .top-grid > div, .home .mid-grid > div):hover {
+  transform: scale(1.007);
+  transition: .3s;
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.527);
+}
+.home .top-grid .kit_name, .home .mid-grid .kit_name {
+  position: absolute;
+  bottom: 5%;
+  font-size: 12px;
+  font-family: monospace;
+  background-color: rgba(0, 0, 0, 0.877);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgba(218, 165, 32, 0.644);
+  box-shadow: inset 0 0 2px white;
+  padding: 5px;
+  margin: 5px;
+  z-index: 5;
+}
+.home .top-grid img, .mid-grid img {
+  filter: contrast(110%);
   position: absolute;
   object-fit: cover;
   object-position: center;
@@ -115,35 +142,35 @@ html, body {
   width: 100%;
   margin: 0;
 }
-.top-grid, .mid-grid {
+.home .top-grid, .mid-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 5px 5px;
   grid-template-rows: 236px 236px;
 }
 /* TOP GRID------------------------------------ */
-.top-grid .box-2 {
+.home .top-grid .box-2 {
   grid-column: 2/5;
   grid-row: 1/3;
 }
 @media only screen and (max-width: 1200px) {
-  .top-grid {
+  .home .top-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 236px);
   }
-  .top-grid .box-2, .mid-grid .box-1 {
+  .home .top-grid .box-2, .mid-grid .box-1 {
     grid-column: 1/3;
     grid-row: 1/3;
   }
 }
 /* MID GRID -----------------------------------*/
-.mid-grid .box-1 {
+.home .mid-grid .box-1 {
   grid-column: 1/3;
   grid-row: 1/3;
 }
 @media only screen and (max-width: 1200px) {
-  .mid-grid {
+  .home .mid-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows:  repeat(5, 236px);;
@@ -200,26 +227,51 @@ html, body {
 
 /* GUNPLA SHOW ______________________________________________________ */
 /* TOP GRID------------------------------------ */
+.figures {
+  padding-right: 5px;
+  padding-left: 5px;
+}
 .figures .top-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 236px);
+  margin-bottom: 5px;
 }
 .figures .top-grid .box-1 {
   grid-column: 1/4;
   grid-row: 1/5;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  background-color: rgba(77, 59, 0, 0.068);
+}
+.figures .top-grid .box-1 img {
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
 }
 .figures .top-grid .box-2 {
+  background-color: rgba(0, 0, 0, 0.774);
   grid-column: 4/6;
   grid-row: 1/5;
+  display: flex;
+  font-family: 'Roboto Mono', monospace;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 16px;
 }
-.figures .top-grid > div, .review {
-  background:#eee;
-  padding: 1em;
+.figures .top-grid .box-2 span {
+  font-size: 19px;
+  font-weight: 900;
 }
-.figures .top-grid > div:nth-child(odd), .review:nth-child(odd)  {
-  background:#ddd;
+.figures #kit-info {
+  color: white;
+  padding: 15px;
 }
+.figures #kit-info > div {
+  margin: 10px;
+}
+
 @media only screen and (max-width: 1200px) {
   .figures .top-grid {
     display: grid;
@@ -240,13 +292,47 @@ html, body {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(1, 260px);
+  grid-gap: 5px;
 }
 .figures .bottom-grid > div {
-  background:#eee;
-  padding: 1em;
+  position: relative;
+  overflow: hidden;
 }
-.figures .bottom-grid > div:nth-child(odd) {
-  background:#ddd;
+.figures .bottom-grid a {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.figures .bottom-grid img {
+  filter: contrast(110%);
+  position: absolute;
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+.figures .bottom-grid .kit_name {
+  position: absolute;
+  bottom: 5%;
+  font-size: 10px;
+  font-family: monospace;
+  background-color: rgba(0, 0, 0, 0.877);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgba(218, 165, 32, 0.644);
+  box-shadow: inset 0 0 2px white;
+  padding: 5px;
+  margin: 5px;
+  z-index: 5;
+}
+:is(.figures .bottom-grid img):hover {
+  transform: scale(1.02);
+  transition: .3s;
+}
+:is(.figures .bottom-grid > div):hover {
+  transform: scale(1.007);
+  transition: .3s;
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.527);
 }
 @media only screen and (max-width: 1200px) {
   .bottom-grid :is(.box-5,.box-6,.box-7,.box-8) {

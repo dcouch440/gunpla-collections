@@ -3,17 +3,21 @@
         <% (1..5).each do |box_number| %>
           <% gunpla =  @rand_gunplas[box_number - 1]%>
           <div class="box-<%= box_number %>">
-            <div class="kit_name"><%= gunpla.kit_name %></div>
-            <%= image_tag(gunpla.images.first) %>
+            <a href="<%=  gunpla_path(gunpla)  %>">
+              <div class="kit_name"><%= gunpla.kit_name %></div>
+              <%= image_tag(gunpla.images.first) %>
+            </a>
           </div>
         <% end %>
       </div>
       <div class="mid-grid">
         <% (1..7).each do |box_number| %>
-          <% gunpla =  @rand_gunplas[(box_number -1) + 5]%>
+          <% gunpla =  @rand_gunplas[(box_number - 1) + 5]%>
           <div class="box-<%= box_number %>">
+          <a href="<%=  gunpla_path(gunpla) %>">
             <div class="kit_name"><%= gunpla.kit_name %></div>
             <%= image_tag(gunpla.images.first) %>
+          </a>
           </div>
         <% end %>
       </div>
