@@ -1,6 +1,6 @@
 class GunplasController < ApplicationController
   def index
-    @gunpla = Gunpla.all
+    @rand_gunplas = get_randoms(Gunpla.all)
     render :index
   end
 
@@ -49,5 +49,9 @@ class GunplasController < ApplicationController
 
   def gunpla_params
     params.require(:gunpla).permit(:kit_name, :gundam_name, :gundam_series, :grade, :scale)
+  end
+
+  def get_randoms(data_array)
+    data_array.sample(12)
   end
 end
