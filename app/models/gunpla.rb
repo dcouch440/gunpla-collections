@@ -5,4 +5,6 @@ class Gunpla < ApplicationRecord
 
   validates *%i[kit_name gundam_name grade scale gundam_series],
     presence: true
+
+  scope :gunpla_collection, -> (user) {where("user_id = ?", user)}
 end

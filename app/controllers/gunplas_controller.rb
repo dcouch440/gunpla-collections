@@ -47,7 +47,19 @@ class GunplasController < ApplicationController
     redirect_to gunplas_path
   end
 
+  def add_collection
+    byebug
+    @user = User.find(current_user.id)
+    gunpla = Gunpla.find(params['gunpla_id'])
+    gunpla.users << @user
+    redirect_to :show
+  end
+
   private
+
+  # def collection_params
+  #   params.require(:gunpla).permit(:gunpla_id)
+  # end
 
   def gunpla_params
     params.require(:gunpla).permit(:kit_name, :gundam_name, :gundam_series, :grade, :scale)
