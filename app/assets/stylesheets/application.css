@@ -359,6 +359,7 @@ html, body {
   grid-auto-rows: minmax(300px, auto);
   grid-template-rows: 100%;
   margin-bottom: 5px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .review-info > div:not(.author-bio) {
   font-size: 14px;
@@ -410,8 +411,14 @@ html, body {
   color: black;
 }
 .review-info .author-bio {
+  display: flex;
+  flex-direction: column;
   grid-column: 1/6;
   grid-row: 4/7;
+}
+.review-info .joined {
+  position: absolute;
+  bottom: 5px;
 }
 .review-body {
   padding: 20px;
@@ -421,6 +428,7 @@ html, body {
   justify-content: space-around;
 }
 .review-body :not(#content_body) {
+  font-family: 'zillaslab, palatino, "Palatino Linotype", serif';
   font-size: 24 px;
 }
 .review-body span {
