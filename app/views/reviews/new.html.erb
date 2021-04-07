@@ -1,18 +1,36 @@
 <div class="form-page-container">
   <div class="form-grid">
     <div class='box-1 center-content'>
-      Gungpla info?
+      <div id="kit-info">
+        <div><span>Kit Name:</span> <%= @gunpla.kit_name %></div>
+        <div><span>Gundam Name:</span> <%= @gunpla.gundam_name %></div>
+        <div><span>Grade:</span> <%= @gunpla.grade %></div>
+        <div><span>Scale:</span> <%= @gunpla.scale %></div>
+        <div><span>Gundam Series:</span> <%= @gunpla.gundam_series %></div>
+      </div>
     </div>
     <div class='box-2 center-content'>
-      GUNGPLA PHOTO HERE
+     <%= image_tag(@gunpla.images.second) %> 
     </div>
     <div class='box-3'>
-      <form class='review'>
-        <label>Title</label>
-        <input type="text"/>
-        <textarea type="text">
-        </textarea>
-      </form>
+    <h1>Enter a Review</h1>
+      <%= form_for [@gunpla, @review] do |f| %>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+        <%= f.label :rating %>
+        <%= f.text_field :rating %>
+        <%= f.label :content_body %>
+        <%= f.text_area :content_body %>
+
+        <%= f.submit %>
+      <% end %>
+      <%# <form class='review'> %>
+        <%# <label>Title</label> %>
+        <%# <input type="text"/> %>
+        <%# <label>Body</label> %>
+        <%# <textarea type="text"> %>
+        <%# </textarea> %>
+      <%# </form> %>
     </div>
   </div>
 </div>

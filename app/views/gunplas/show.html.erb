@@ -32,47 +32,26 @@
           <div class="review-info">
             <div class="avatar center-content"><%= image_tag(user.avatar) %></div>
             <div class="author-username"><%= user.username %></div>
-            <div class="author-signed-up"><%= user.created_in_english %></div>
-            <div class="how-many-posts">How Many Posts</div>
+            <div class="author-signed-up">Joined <%= user.created_in_english %> Ago </div>
+            <div class="how-many-posts">
+              <%= user.how_many_posts %> Posts
+            </div>
             <div class="author-bio">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam culpa laborum similique dolorem ipsum illum! Sint, dolor dignissimos mollitia itaque esse natus sequi id voluptate consectetur eius, adipisci eos nam! Ipsa officiis, incidunt veritatis laudantium unde corporis cum officia impedit voluptates ratione, earum est laborum et sint quod deleniti tempore saepe doloremque molestiae nulla corrupti quasi facilis quam deserunt! Animi enim vitae sed laboriosam saepe blanditiis cum quis repellat delectus iste. Cumque voluptate eum similique aut incidunt itaque, voluptatem vitae!
+              <%= user.bio %>
             </div>
           </div>
         </div>
         <div class="review-body">
-            <%= review.title %>
-            <%= review.rating %>
-            <%= review.content_body %>
+            <div><span>Title:</span> <%= review.title %></div>
+            <div>
+              <span>Rating: </span>
+              <% review.rating.to_i.times do %>
+                ⭐
+              <% end %>
+            </div>
+            <div id="content_body"><%= review.content_body %></div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
-
-
-  <div class='reviews'>
-    <% @reviews.each do |review| %>
-      <% user = User.find(review.user_id) %>
-      <div class="review">
-  
-        <div class="review-info">
-              <div class="avatar center-content">Avatar</div>
-              <div class="author-username">Username</div>
-              <div class="author-signed-up">Signed Up At?</div>
-              <div class="how-many-posts">How Many Posts</div>
-          <div class="author-bio">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam culpa laborum similique dolorem ipsum illum! Sint, dolor dignissimos mollitia itaque esse natus sequi id voluptate consectetur eius, adipisci eos nam! Ipsa officiis, incidunt veritatis laudantium unde corporis cum officia impedit voluptates ratione.
-          </div>
-
-          <div class="review-body">
-            <%= review.title %>
-            <%= review.rating %>
-            <%= review.content_body %>
-          </div>
-
-        </div>
-
-      </div>
-    <% end %>
-  
-  </div>

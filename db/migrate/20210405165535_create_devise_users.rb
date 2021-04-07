@@ -7,6 +7,7 @@ class CreateDeviseUsers < ActiveRecord::Migration[5.2]
       t.string :username,           null: false
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+      t.string :bio,                null: false, default: "No Bio"
 
       ## Recoverable
       t.string   :reset_password_token
@@ -35,7 +36,7 @@ class CreateDeviseUsers < ActiveRecord::Migration[5.2]
 
 
       # Uncomment below if timestamps were not included in your original model.
-      # t.timestamps null: false
+      t.timestamps null: false
     end
 
     add_index :users, :email,                unique: true

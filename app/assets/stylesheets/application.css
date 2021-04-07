@@ -87,7 +87,7 @@ html, body {
 #navigation {
   width: 50%;
 }
-.home, .figures {
+.home, .figures, .form-page-container {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -96,6 +96,9 @@ html, body {
 /* GUNPLAS-INDEX-----------------------------------*/
 .home .top-grid, .home .mid-grid {
   margin-top: 5px;
+}
+.home .mid-grid {
+  margin-bottom: 10px;
 }
 /* PAGE FORMATING FOR FRONT */
 .home .top-grid > div, .home .mid-grid > div {
@@ -355,9 +358,18 @@ html, body {
   grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: minmax(300px, auto);
   grid-template-rows: 100%;
+  margin-bottom: 5px;
+}
+.review-info > div:not(.author-bio) {
+  font-size: 16px;
+}
+.review img {
+  object-fit: cover;
+  border-radius: 3px;
+  width: 100%;
+  height: 100%;
 }
 .review-info-container {
-  background-color: rgb(158, 158, 158);
   grid-column: 1/3;
 }
 .review-info {
@@ -365,6 +377,8 @@ html, body {
   height: 100%;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(6, 1fr);
+  background-image: linear-gradient(147deg, #0000003d 0%, #607d8b0d 74%);
+  padding: 10px;
 }
 .review-info .avatar {
   grid-column: 1/4;
@@ -373,10 +387,9 @@ html, body {
 .review-info .author-username,
 .review-info .author-signed-up,
 .review-info .how-many-posts {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .review-info .author-username {
   grid-column: 4/6;
@@ -393,7 +406,6 @@ html, body {
 .review .review-body,
 .review-info .author-bio {
   padding: 20px;
-  background-color: #e8edeb;
   color: black;
 }
 .review-info .author-bio {
@@ -403,15 +415,24 @@ html, body {
 .review-body {
   padding: 20px;
   grid-column: 3/6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-
+}
+.review-body :not(#content_body) {
+  font-size: 24 px;
+}
+.review-body span {
+  font-weight: 900;
 }
 @media only screen and (max-width: 1000px) {
   .review {
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: 140px auto;
+    grid-template-rows: auto auto;
     grid-auto-rows: minmax(300px, auto);
   }
   .review-info-container {
-    background-color: rgb(158, 158, 158);
     grid-row: 1/1;
   }
   .review-info {
