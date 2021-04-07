@@ -13,8 +13,11 @@
       </div>
       <div class='kit-buttons'>
         <button class='button-default review-button'>
-            <a href="<%= new_gunpla_review_path(@gunpla) %>">Add a Review</a>
-            </button>
+          <a href="<%= new_gunpla_review_path(@gunpla) %>">Add a Review</a>
+        </button>
+        <%= form_with url: "/gunplas/#{@gunpla.id}/collection", method: :post do |form| %>
+          <%= form.submit %>
+        <% end %>
       </div>
     </div>
   </div>
