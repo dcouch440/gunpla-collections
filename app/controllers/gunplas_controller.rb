@@ -48,12 +48,22 @@ class GunplasController < ApplicationController
   end
 
   def add_collection
-    byebug
     @user = User.find(current_user.id)
     gunpla = Gunpla.find(params['gunpla_id'])
     gunpla.users << @user
     redirect_to :show
   end
+
+  def show_collection
+    @user = nil
+    if current_user&.id
+      @user = User.find(current_user.id)
+    end
+    @gunplas = Gunpla.all
+    render :collection
+  end
+
+
 
   private
 

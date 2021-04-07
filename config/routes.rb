@@ -6,10 +6,7 @@ Rails.application.routes.draw do
 
   root to: 'gunplas#index'
 
-  get '/users/:id/collection', to: 'gunplas#collection'
-
-  # post 'sign-in', to: 'sessions#sign_in'
-  # delete 'sign-out', to: 'sessions#sign_out'
+  get '/gunplas/collection', to: 'gunplas#show_collection'
 
   resources :gunplas, only: [:index, :show] do
     post 'collection', to: 'gunplas#add_collection'

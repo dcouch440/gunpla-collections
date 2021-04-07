@@ -13,9 +13,10 @@
     <div id="body-container">
       <div id='navbar'>
         <div id="navigation">
-          <a class='link-default' href='/'>Home</a>
-          <a class='link-default' href='/'>figures</a>
-          <a class='link-default' href='/'>Dogs</a>
+          <a class='link-default' href='/gunplas'>Home</a>
+          <% if current_user %>
+            <a class='link-default' href='/gunplas/collection'>Collections</a>
+          <% end %>
         </div>
         <div id="account">
           <div id="account-button-container">

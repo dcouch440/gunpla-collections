@@ -2,6 +2,11 @@
   <div class="top-grid">
     <div class='box-1'>
       <%= image_tag(@gunpla.images.first) %>
+      <div id='favorites'>
+        <%= form_with url: "/gunplas/#{@gunpla.id}/collection", method: :post do |form| %>
+          <%= form.submit '♥' %>
+        <% end %>
+      </div>
     </div>
     <div class='box-2'>
       <div id="kit-info">
@@ -15,9 +20,6 @@
         <button class='button-default review-button'>
           <a href="<%= new_gunpla_review_path(@gunpla) %>">Add a Review</a>
         </button>
-        <%= form_with url: "/gunplas/#{@gunpla.id}/collection", method: :post do |form| %>
-          <%= form.submit %>
-        <% end %>
       </div>
     </div>
   </div>
@@ -58,7 +60,7 @@
                 ⭐
               <% end %>
             </div>
-            <div id="content_body"><%= review.content_body %></div>
+            <div id="content_body"><%= sanitize review.content_body %></div>
         </div>
       </div>
     <% end %>

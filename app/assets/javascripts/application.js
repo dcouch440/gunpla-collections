@@ -15,4 +15,32 @@
 //= require turbolinks
 //= require_tree .
 
-import './loaded.js'
+//= require owl.carousel
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // const caroData = [...document.querySelectorAll('.figure-slide')]
+    // const caroLength = caroData.length
+    // if (caroLength > 0) {
+    //   let counter = 0
+    //   caroData.forEach((data) => {
+    //     data.style.display = 'none';
+    //   })
+    //   caroData[counter].style.display = 'inherit';
+    //   setInterval(() => {
+    //     if (caroData.length == 0) {
+    //       stopInterval()
+    //     }
+    //     caroData.forEach((data) => {
+    //       data.style.display = 'none';
+    //     })
+    //     if (counter >= caroLength) counter = 0;
+    //     caroData[counter].style.display = 'inherit';
+    //     counter += 1
+    //   }, speed)
+    // }
+  
+})
