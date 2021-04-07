@@ -361,7 +361,8 @@ html, body {
   margin-bottom: 5px;
 }
 .review-info > div:not(.author-bio) {
-  font-size: 16px;
+  font-size: 14px;
+  font-family: monospace;
 }
 .review img {
   object-fit: cover;
@@ -418,7 +419,6 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  font-
 }
 .review-body :not(#content_body) {
   font-size: 24 px;
