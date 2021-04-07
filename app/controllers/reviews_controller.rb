@@ -8,7 +8,9 @@ class ReviewsController < ApplicationController
 
   def create
     @gunpla = Gunpla.find(params[:gunpla_id])
-    if review.save
+    @review = @gunpla.reviews.new(review_params)
+    @review.user_id = current_user.id
+    if @review.save()
       flash[:notice] = "Review successfully added!"
       redirect_to gunpla_path(@gunpla)
     else

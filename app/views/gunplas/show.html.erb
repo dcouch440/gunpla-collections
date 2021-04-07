@@ -11,6 +11,11 @@
         <div><span>Scale:</span> <%= @gunpla.scale %></div>
         <div><span>Gundam Series:</span> <%= @gunpla.gundam_series %></div>
       </div>
+      <div class='kit-buttons'>
+        <button class='button-default review-button'>
+            <a href="<%= new_gunpla_review_path(@gunpla) %>">Add a Review</a>
+            </button>
+      </div>
     </div>
   </div>
   <div class="bottom-grid">
@@ -32,12 +37,12 @@
           <div class="review-info">
             <div class="avatar center-content"><%= image_tag(user.avatar) %></div>
             <div class="author-username"><%= user.username %></div>
-            <div class="author-signed-up"></div>
+            <div class="author-signed-up"><span>Joined <%= user.created_in_english %> Ago</span></div>
             <div class="how-many-posts">
               <%= user.how_many_posts %> Posts
             </div>
             <div class="author-bio">
-              <%= user.bio %>
+              <div><%= user.bio %></div>
               <div class="joined">Joined <%= user.created_in_english %> Ago</div>
             </div>
           </div>
