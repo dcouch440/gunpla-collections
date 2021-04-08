@@ -8,7 +8,7 @@
 
 This is a website for Gunpla fans to keep their collection and review their favorite Gunpla kits.
 
-![Table Schema](/public/img/)
+![Table Schema](/public/img/gunpla_schema.png)
 * * *
 
 ## Technologies used
@@ -35,7 +35,9 @@ This is a website for Gunpla fans to keep their collection and review their favo
 Initial Specs:
 | Behavior | Input | Output |
 | ------------- |:-------------:| -----:|
-| Behavoir 1  | Input 1 | Output 1 |
+| Allows users to input a review for a Gunpla  | Review information including Title, Rating, and Body | Shows rating on individual Gunpla |
+| Allows users to add Gunpla to a collection  | Click on add to collection button | Shows kit on user's collection |
+| Allows users to remove Gunpla from a collection  | Click on remove from collection button | Removes kit from user's collection |
 
 * * *
 
@@ -133,22 +135,16 @@ This will launch a local host via Rails. You should be able to navigate to http:
 
 ## To dos
 
-* Notice on adding a gunpla to collection
-* Delete a gunpla from collection
-* Average for reviews
-* Highest rated gunpla for ordering on the front page
 * Deploy to Heroku
-* Add name to nav bar
 
 ## Bugs
 
-*
+* None at this time
 
 ## Resources
-* [Link 1](http://link1.com)
-* [Link 2](http://link2.com)
+* [Gunpla Wiki](https://gunpla.fandom.com/wiki/Gunplapedia)
+* [Gundam Info](https://en.gundam.info/)
 * [w3Schools](https://www.w3schools.com/)
-* [Link 3](http://link3.com)
 * [stackoverflow](https://stackoverflow.com/)
 
 * * *
