@@ -1,6 +1,7 @@
 class GunplasController < ApplicationController
+
   def index
-    @rand_gunplas = get_twelve_random()
+    @top_gunpla = get_top_reviews()
     render :index
   end
 
@@ -91,14 +92,9 @@ class GunplasController < ApplicationController
     params.require(:gunpla).permit(:kit_name, :gundam_name, :gundam_series, :grade, :scale)
   end
 
-  def gunpla_review_avg
-    @gunpla.reviews.average(:rating).round(2).to_f()
-  end
 
-  def sort_all_by_review
-    self.sort {|zap, zoo|
-      zap.reviews.average(:rating) <=> zoo.reviews.average(:rating)
-    }
+  def get_top_reviews
+    Gunpla.sort_all_by_review.take(12)
   end
 
   def get_twelve_random

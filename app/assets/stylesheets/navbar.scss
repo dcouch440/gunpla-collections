@@ -35,6 +35,10 @@
   font-family: monospace;
   .user-display {
     margin-right: 15px;
+    font-size: 16px;
+  }
+  & > * {
+    margin-right: 5px;
   }
 }
 #account-housing > * {

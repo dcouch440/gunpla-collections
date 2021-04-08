@@ -1,6 +1,6 @@
 <div id="collections-page">
   <div id="collections-wrapper">
-    <% if @user != nil %>
+    <% if @user != nil && @user&.gunplas.any? %>
       <% @user.gunplas.each do |gunpla| %>
         <div class="box">
           <div class="kit-image center-content">

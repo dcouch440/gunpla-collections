@@ -7,4 +7,15 @@ class Gunpla < ApplicationRecord
     presence: true
 
   scope :gunpla_collection, -> (user) {where("user_id = ?", user)}
+
+  def self.sort_all_by_review
+    Gunpla.all.sort {|zap, zoo|
+      zap.reviews.average(:rating) <=> zoo.reviews.average(:rating)
+    }.reverse()
+  end
+
+  def reviews_avg
+    self.reviews.average(:rating).round(1).to_f()
+  end
+
 end

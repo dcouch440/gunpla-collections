@@ -25,6 +25,18 @@ html, body {
 img {
   filter: contrast(110%);
 }
+input[type="submit"] {
+  &:active {
+    background-color: black;
+    box-shadow: 0 0 2px 1px white;
+  }
+  &:focus {
+    outline: none;
+    background-color: black;
+    box-shadow: 0 0 2px 5px black;
+    transition: 0s;
+  }
+}
 /*  DEFAULTS --------------------------------------------------------- */
 .link-default {
   text-decoration: none;
