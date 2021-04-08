@@ -1,7 +1,13 @@
 <div class="figures">
   <div class="top-grid">
     <div class='box-1'>
-      <%= image_tag(@gunpla.images.first) %>
+      <div id="caro-container">
+        <% @gunpla.images.each do |image| %>
+          <div id="caro-i" class='caro-image'>
+            <%= image_tag(image) %>
+          </div>
+        <% end %>
+      </div>
       <div id='favorites'>
         <%= form_with url: "/gunplas/#{@gunpla.id}/collection", method: :post do |form| %>
           <%= form.submit '♥' %>

@@ -4,19 +4,21 @@
       <% @user.gunplas.each do |gunpla| %>
         <div class="box">
           <div class="kit-image center-content">
-            <%= image_tag(gunpla.images.first) %>
+            <a href="<%=  gunpla_path(gunpla)  %>">
+              <%= image_tag(gunpla.images.second) %>
+            </a>
           </div>
-          <div class="Kit-info center-content">
+          <div class="kit-info center-content">
             <div><span>Kit Name:</span> <%= gunpla.kit_name %></div>
             <div><span>Gundam Name:</span> <%= gunpla.gundam_name %></div>
             <div><span>Grade:</span> <%= gunpla.grade %></div>
             <div><span>Scale:</span> <%= gunpla.scale %></div>
             <div><span>Gundam Series:</span> <%= gunpla.gundam_series %></div>
           </div>
+        </div>
         <% end %>
     <% else %>
       <p>You have no Gunplas in your collection</p>
     <% end %>
-    </div>
   </div>
 </div>
