@@ -4,6 +4,11 @@
       <% @user.gunplas.each do |gunpla| %>
         <div class="box">
           <div class="kit-image center-content">
+            <div id='gunpla_delete'>
+              <%= form_with url: "/gunplas/#{gunpla.id}/collection", method: "delete" do |form| %>
+                <%= form.submit '🗑️' %>
+              <% end %>
+            </div>
             <a href="<%=  gunpla_path(gunpla)  %>">
               <%= image_tag(gunpla.images.second) %>
             </a>

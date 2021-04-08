@@ -8,6 +8,7 @@ class GunplasController < ApplicationController
     @gunpla = Gunpla.find(params[:id])
     @gunplas_related = get_eight_random()
     @reviews = Review.gunpla_reviews(@gunpla.id)
+    @liked = render_liked()
     render :show
   end
 
@@ -50,8 +51,11 @@ class GunplasController < ApplicationController
   def add_collection
     @user = User.find(current_user.id)
     gunpla = Gunpla.find(params['gunpla_id'])
-    gunpla.users << @user
-    redirect_to :show
+    if gunpla.users.include?(@user)
+    else
+      gunpla.users << @user
+      redirect_to gunplas_collection_path
+    end
   end
 
   def show_collection
@@ -63,7 +67,14 @@ class GunplasController < ApplicationController
     render :collection
   end
 
-
+  def delete_gunpla_from_collection
+    @user = User.find(current_user.id)
+    gunpla = Gunpla.find(params['gunpla_id'])
+    if gunpla.users.include?(@user)
+      gunpla.users.destroy(@user)
+      redirect_to gunplas_collection_path
+    end
+  end
 
   private
 
@@ -71,8 +82,23 @@ class GunplasController < ApplicationController
   #   params.require(:gunpla).permit(:gunpla_id)
   # end
 
+  def render_liked
+    @user = current_user && User.find(current_user.id)
+    @gunpla.users.include?(@user) ? '♥️' : '♡'
+  end
+
   def gunpla_params
     params.require(:gunpla).permit(:kit_name, :gundam_name, :gundam_series, :grade, :scale)
+  end
+
+  def gunpla_review_avg
+    @gunpla.reviews.average(:rating).round(2).to_f()
+  end
+
+  def sort_all_by_review
+    self.sort {|zap, zoo|
+      zap.reviews.average(:rating) <=> zoo.reviews.average(:rating)
+    }
   end
 
   def get_twelve_random
@@ -83,3 +109,25 @@ class GunplasController < ApplicationController
     Gunpla.all.sample(8)
   end
 end
+
+
+
+
+# test_array_of_arrays = []
+# 1000.times {
+#   array = []
+#   1000.times {
+#     array << rand(1..100)
+#   }
+#   test_array_of_arrays << array
+# }
+
+# Gunpla.all
+
+# @gunpla.sort! {|zap, zoo|
+#   zap.reviews.average(:rating) <=> zoo.reviews.average(:rating)
+# }
+
+# zap.each do |za|
+#   p za.reduce(:+)
+# end

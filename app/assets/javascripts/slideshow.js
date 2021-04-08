@@ -1,35 +1,44 @@
-const slideShow = ({speed}) => {
+const gunplaSlideShow = ({speed, elements}) => {
 
-  const caroData = [...document.querySelectorAll('.caro-image')];
-  const caroLength = caroData.length;
+  const elementArray = [...document.querySelectorAll(elements)];
+  const arrayLength = elementArray.length
 
-  if (caroLength > 0) {
+  const hideAllImages = (elementArray) => {
+    elementArray.forEach(
+      (data) => {
+        data.style.display = 'none';
+      }
+    )
+  }
 
-    caroData.forEach((data) => {
-      data.style.display = 'none';
-    })
+  const showOne = (current) => {
+    elementArray[current].style.display = 'block';
+  }
 
-    let counter = 0;
-    caroData[counter].style.display = 'inherit';
+  if (arrayLength > 0)
+  {
+
+    let currentIndex = 0;
+
+    hideAllImages(elementArray)
+    showOne(currentIndex)
 
     setInterval(() => {
-      if (caroData.length == 0){
-          stopInterval();
-      }
-      caroData.forEach((data) => {
-          data.style.display = 'none';
-      })
+      // safeguards
+      if (elementArray.length == 0){stopInterval();}
+      if (currentIndex >= arrayLength) {currentIndex = 0;}
 
-      if (counter >= caroLength) {counter = 0;}
+      hideAllImages(elementArray)
+      showOne(currentIndex)
 
-      caroData[counter].style.display = 'inherit';
-      counter += 1;
+      currentIndex += 1;
 
     }, speed)
+
   }
 
 }
 
 document.addEventListener('turbolinks:load', () => {
-  slideShow({speed: 3000})
+  gunplaSlideShow({speed: 3000, elements: '.caro-image'})
 })

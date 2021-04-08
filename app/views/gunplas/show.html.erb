@@ -10,7 +10,7 @@
       </div>
       <div id='favorites'>
         <%= form_with url: "/gunplas/#{@gunpla.id}/collection", method: :post do |form| %>
-          <%= form.submit '♥' %>
+          <%= form.submit "#{@liked}" %>
         <% end %>
       </div>
     </div>
@@ -41,7 +41,7 @@
     <% end %>
   </div>
   <div class='reviews'>
-    <% @reviews.each do |review| %>
+    <% @reviews.reverse_each do |review| %>
       <% user = User.find(review.user_id) %>
       <div class="review">
         <div class="review-info-container">
