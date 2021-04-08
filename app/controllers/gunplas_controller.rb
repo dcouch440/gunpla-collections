@@ -79,10 +79,6 @@ class GunplasController < ApplicationController
 
   private
 
-  # def collection_params
-  #   params.require(:gunpla).permit(:gunpla_id)
-  # end
-
   def render_liked
     @user = current_user && User.find(current_user.id)
     @gunpla.users.include?(@user) ? '♥️' : '♡'
@@ -91,7 +87,6 @@ class GunplasController < ApplicationController
   def gunpla_params
     params.require(:gunpla).permit(:kit_name, :gundam_name, :gundam_series, :grade, :scale)
   end
-
 
   def get_top_reviews
     Gunpla.sort_all_by_review.take(12)
@@ -106,24 +101,3 @@ class GunplasController < ApplicationController
   end
 end
 
-
-
-
-# test_array_of_arrays = []
-# 1000.times {
-#   array = []
-#   1000.times {
-#     array << rand(1..100)
-#   }
-#   test_array_of_arrays << array
-# }
-
-# Gunpla.all
-
-# @gunpla.sort! {|zap, zoo|
-#   zap.reviews.average(:rating) <=> zoo.reviews.average(:rating)
-# }
-
-# zap.each do |za|
-#   p za.reduce(:+)
-# end

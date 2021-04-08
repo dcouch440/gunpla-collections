@@ -8,6 +8,4 @@ class ApplicationRecord < ActiveRecord::Base
     time_ago_in_words(self.created_at)
   end
 
-
-
 end
