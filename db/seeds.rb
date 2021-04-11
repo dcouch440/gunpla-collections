@@ -2,15 +2,15 @@ require 'faker'
 class Seed
 
   def self.run_seed
-    Review.destroy_all
-    User.destroy_all
+    # Review.destroy_all
+    # User.destroy_all
     seed = Seed.new
-    30.times do
-      user = User.create!(user_hash())
-      rand(4..14).times do
-        Review.create!(review_hash(user))
-      end
-    end
+    # 30.times do
+    #   user = User.create!(user_hash())
+    #   rand(4..14).times do
+    #     Review.create!(review_hash(user))
+    #   end
+    # end
     seed.attach_avatars_to_users()
     p "Created #{User.count} users and #{Review.count} reviews."
   end
@@ -44,11 +44,11 @@ class Seed
   end
 
   def get_dir_length
-    Dir["#{::Rails.root}/storage/defaults/*.*"].length
+    Dir["#{::Rails.root}/app/assets/images/avatar_images/*.*"].length
   end
 
   def get_dir_array
-    Dir["#{::Rails.root}/storage/defaults/*.*"]
+    Dir["#{::Rails.root}/app/assets/images/avatar_images/*.*"]
   end
 
   def get_dir_hash_using_index(index)
