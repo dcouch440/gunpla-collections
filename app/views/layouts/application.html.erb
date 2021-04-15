@@ -17,6 +17,9 @@
           <% if current_user %>
             <a class='link-default' href='/gunplas/collection'>Collections</a>
           <% end %>
+          <% if current_user&.admin %>
+            <a class="link-default" href="/admin">Admin</>
+          <% end %>
         </div>
         <div id="account">
           <div id="account-button-container">

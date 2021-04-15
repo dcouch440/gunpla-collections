@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.5'
@@ -9,20 +9,11 @@ gem 'rails', '~> 5.2.5'
 # Faker for preseeding database
 gem 'faker'
 
+gem 'cloudinary'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
-
-# Bootstrap gem
-gem 'bootstrap-sass', '~> 3.4.1'
-# gem 'bootstrap', '~> 5.0.0.beta:2'
-gem 'sassc-rails', '>= 2.1.0'
-# jquery gemfile
-gem 'jquery-rails'
-gem 'owlcarousel-rails'
-
-gem 'popper'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
