@@ -6,7 +6,7 @@
 
 ## Description
 
-This is a website for Gunpla fans to keep their collection and review their favorite Gunpla kits.
+This is a website for Gunpla fans to keep their collection and review their favorite Gunpla kits. If you would like to see a live version of the website on Heroku, you can find it [here.](https://cryptic-basin-12416.herokuapp.com/gunplas)
 
 ![Table Schema](/public/img/gunpla_schema.png)
 * * *
